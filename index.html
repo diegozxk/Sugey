@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Christmas Letter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Dancing Script', cursive;
+      background:
+        radial-gradient(circle at top, rgba(255,240,220,0.9), rgba(255,255,255,0.7)),
+        url('https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      animation: fadeIn 1s ease;
+    }
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+
+    /* Envelope bigger */
+.envelope {
+  width: 480px;   /* was 340px */
+  height: 300px;  /* was 220px */
+  background: #f7efe3;
+  border-radius: 12px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  position: relative;
+  cursor: pointer;
+  margin: 40px auto;
+}
+    .flap {
+      position: absolute;
+      inset: 0;
+      background: #e6dac8;
+      clip-path: polygon(0 0, 100% 0, 50% 55%);
+      transform-origin: top;
+      transition: transform 1s ease;
+    }
+    .envelope.open .flap { transform: rotateX(180deg); }
+    .open-text {
+      position: absolute;
+      bottom: 15px;
+      width: 100%;
+      text-align: center;
+      font-size: 1.1rem;
+      opacity: 0.7;
+    }
+
+    /* Letter */
+    .letter {
+      display: none;
+      background: #fffdf7;
+      max-width: 720px;
+      margin: 40px auto;
+      padding: 48px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(255,180,120,0.6),
+                  0 25px 50px rgba(0,0,0,0.2);
+      line-height: 1.9;
+      font-size: 1.4rem;
+      animation: warmFade 1s ease;
+    }
+    @keyframes warmFade {
+      from {opacity:0; transform:scale(0.95);}
+      to {opacity:1; transform:scale(1);}
+    }
+    h1 { text-align:center; font-weight:600; margin-bottom:10px; }
+    .date { text-align:center; font-size:1.1rem; opacity:0.6; margin-bottom:25px; }
+    #text { white-space: pre-wrap; min-height:200px; }
+    .signature { margin-top:40px; text-align:right; font-style:italic; }
+    .next-btn { text-align:center; margin-top:45px; }
+    .next-btn a { font-size:2rem; text-decoration:none; transition:0.3s; }
+    .next-btn a:hover { opacity:0.6; }
+
+    /* Snow */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: white;
+      opacity: 0.8;
+      animation: fall linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes fall { to { transform: translateY(110vh); } }
+  </style>
+</head>
+<body>
+
+<audio id="bg-music" autoplay loop>
+  <source src="christmas.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<button onclick="toggleMusic()">Play / Pause</button>
+
+<script>
+  function toggleMusic() {
+    const music = document.getElementById('bg-music');
+    if (music.paused) {
+      music.play();
+    } else {
+      music.pause();
+    }
+  }
+</script>
+
+
+
+  <!-- Envelope -->
+  <div class="envelope" id="envelope" onclick="openEnvelope()">
+    <div class="flap"></div>
+    <div class="open-text">Click to open </div>
+  </div>
+
+  <!-- Letter -->
+  <div class="letter" id="letter">
+    <h1>To my Little Minion, My Love, Mrs. Peters, Darling, Sleeping Beauty, Little One, My Gremlin, My Grinch</h1>
+    <div class="date">December 25, 2025</div>
+    <div id="text"></div>
+    <div class="signature">— Yours, always and forever,<br><b>Bryant Peters</b></div>
+    <div class="next-btn"><a href="new 1.html">Next Page ➜</a></div>
+  </div>
+
+  <script>
+    const letterText = `
+You know I’m always thinking about us. It’s been a year and another Christmas. This all began because you were fortunate to be sick at a very convenient time, when I was going through a “curious” phase. After that, the late nights started as well as movie days, which began with the movie “UP”. We progressed and accomplished quite a lot. Let’s take a trip down memory lane, which we know so well.
+
+(Due to physical touch being my love language. I would like to shed light on things we have accomplished.) We first began holding hands back in the first semester in the Computer lab, right before we had our exam for Intro to Computer, where I had grabbed hold of your little itty bitty hands…which was one of our first quiet accomplishments. Then came the hugs. I believe we had started hugging right before we had to leave to catch our bus. And then, we started kissing, which you know is one of my favourite things. This began under a big tree, off by the side and away from any distraction, which was a very wonderful experience and one I will always remember with the position that we were in, the timing right after eating lunch, and the place which you had chosen under a big tree, away from prying eyes, just you and me.
+
+There are other milestones and goals that’s not solely physical-based that we have accomplished. For example, introducing each other as partners, just like we do with our friends and family. Also, I became the first person to say “I love you,” and every single time I’ve said it since, I even call you ‘love’, so every time you hear the wor,d you know that I will always love you, even if I haven't said it in a while. Because that single word holds everything I feel when I look at you. We also accomplished being in the longest relationship of 1 year, additional accomplishment, like travelling together and having deep conversations.
+
+And, now as I sit and contemplate, I think about our future…which shows how i have a inkling of hope to create and build a world together There's big goals like meeting your parents, planning for a family of our own, like two kids, 4 PETS(I had to bold it clearly, so you remember it was ONLY 4), and a medium size home…and these are promises, as long you would allow me to. I wish to complete the small little task you had asked for, of creating a garden, but TOGETHER(you know why I bolded this), and travelling border to border, coast to coast and country to country, like Hawaii or any other country. And of course, the smoke-filled house when we start learning to cook together.
+
+But even more than that, I thought about the smaller and heartfelt goals like a proper date routine where we can ignore the world and our other obligations so that we can enjoy each other's presence. Or something like creating a storyboard of what we wish to accomplish ,since it was quite hard to remember what we had wanted together as a couple.
+
+But, yeah, I love you more than I can properly even write this letter.
+
+`;
+    let index = 0;
+
+    function openEnvelope() {
+      const env = document.getElementById('envelope');
+      env.classList.add('open');
+      setTimeout(() => {
+        env.style.display = 'none';
+        document.getElementById('letter').style.display = 'block';
+        typeLetter();
+      }, 1000);
+    }
+
+    function typeLetter() {
+      if (index >= letterText.length) return;
+      document.getElementById('text').textContent += letterText.charAt(index);
+      index++;
+      setTimeout(typeLetter, 30);
+    }
+
+    // Snow
+    for (let i = 0; i < 30; i++) {
+      const snow = document.createElement('div');
+      snow.className = 'snowflake';
+      snow.textContent = '❄';
+      snow.style.left = Math.random() * 100 + 'vw';
+      snow.style.animationDuration = 5 + Math.random() * 10 + 's';
+      snow.style.fontSize = 12 + Math.random() * 18 + 'px';
+      document.body.appendChild(snow);
+    }
+  </script>
+</body>
+</html>
